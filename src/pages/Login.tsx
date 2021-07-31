@@ -1,10 +1,12 @@
-import React, {FC} from 'react';
-import {Link} from "react-router-dom"
+import React, {FC, useContext} from 'react';
+import {Link, useHistory} from "react-router-dom"
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup"
-import illustration from "../images/login-page-illustration.jpg"
+import illustration from "../assets/images/login-page-illustration.jpg"
 import {HOME_PAGE_ROUTE} from "../utils/consts";
+import {Context} from "../index";
+import {observer} from "mobx-react-lite";
 
 const schema = yup.object().shape({
     Email: yup.string().required().email(),
@@ -12,10 +14,16 @@ const schema = yup.object().shape({
 })
 
 const Login: FC = () => {
-    const {register, handleSubmit, formState: { errors }} = useForm(
+    const {authStore, userStore} = useContext(Context)
+    const history = useHistory();
+    const {register, handleSubmit, formState: {errors}} = useForm(
         {resolver: yupResolver(schema)})
 
-    const onSubmit = (data: any) => console.log(data)
+    const onSubmit = (data: any) => authStore.login(data.Email, data.Password).then(() => {
+        if (authStore.authenticated) {
+            userStore.loadUser().then(() => history.push(HOME_PAGE_ROUTE))
+        }
+    })
 
     return (
         <div className="px-64 py-32 flex space-x-16">
@@ -27,14 +35,14 @@ const Login: FC = () => {
                 <form onSubmit={handleSubmit(onSubmit)} className="w-full mt-8 space-y-6">
                     <div className="rounded-md shadow-sm space-y-3">
                         <div>
-                            <label className="sr-only" htmlFor="email-address" >Password</label>
+                            <label className="sr-only" htmlFor="email-address">Password</label>
                             <input
                                 {...register("Email")}
                                 id="email-address"
                                 name="Email"
                                 type="email"
-                                className={`${errors["Email"]?.message ? 
-                                    "border-red-500 focus:ring-red-500 focus:border-red-500" : 
+                                className={`${errors["Email"]?.message ?
+                                    "border-red-500 focus:ring-red-500 focus:border-red-500" :
                                     "border-gray-300 focus:ring-indigo-500 focus:border-indigo-500"} 
                                     placeholder-gray-500 text-gray-900 focus:outline-none w-full py-2 border-b-2`}
                                 placeholder="Email address"/>
@@ -63,11 +71,14 @@ const Login: FC = () => {
                                 name="remember-me"
                                 type="checkbox"
                                 className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"/>
-                            <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">Remember me</label>
+                            <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">Remember
+                                me</label>
                         </div>
 
                         <div className="text-sm">
-                            <button className="font-medium text-indigo-600 hover:text-indigo-500 hover:underline">Forgot your password?</button>
+                            <button className="font-medium text-indigo-600 hover:text-indigo-500 hover:underline">Forgot
+                                your password?
+                            </button>
                         </div>
                     </div>
 
@@ -79,12 +90,18 @@ const Login: FC = () => {
                         </button>
                     </div>
                 </form>
-                <Link to={HOME_PAGE_ROUTE} className="mt-2 ml-auto font-medium text-sm text-indigo-600 hover:text-indigo-500 hover:underline">
+                <Link to={HOME_PAGE_ROUTE}
+                      className="mt-2 ml-auto font-medium text-sm text-indigo-600 hover:text-indigo-500 hover:underline">
                     home page
                 </Link>
+                {authStore.loading && <p>Loading...</p>}
+                {authStore.error.isError &&
+                <div className="mt-4 bg-red-100 border border-red-400 text-red-700 px-4 py-1 rounded relative" role="alert">
+                    <span className="block sm:inline">{authStore.error.message}</span>
+                </div>}
             </div>
         </div>
     );
 };
 
-export default Login;
+export default observer(Login);

@@ -1,13 +1,12 @@
 import React, {FC} from 'react';
-import Header from "../components/Header";
 import {observer} from "mobx-react-lite";
 
-const Home: FC = () => {
+const Admin: FC = () => {
     return (
         <div>
-            <Header/>
+            Admin page
         </div>
     );
 };
 
-export default observer(Home);
+export default observer(Admin);
