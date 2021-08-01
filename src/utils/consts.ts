@@ -1,3 +1,5 @@
 export const HOME_PAGE_ROUTE = "/"
 export const LOGIN_PAGE_ROUTE = "/login"
 export const ADMIN_PAGE_ROUTE = "/admin"
+export const ADMIN_PAGE_DASHBOARD_ROUTE = ADMIN_PAGE_ROUTE + "/dashboard"
+export const ADMIN_PAGE_USERS_ROUTE = ADMIN_PAGE_ROUTE + "/users"

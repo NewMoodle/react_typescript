@@ -7,11 +7,11 @@ import {observer} from "mobx-react-lite";
 const App: FC = () => {
     const {authStore, userStore} = useContext(Context)
 
-    useEffect(() => {
-        if (localStorage.getItem("access_token")) {
-            authStore.checkAuth().then(() => userStore.loadUser())
-        }
-    }, [])
+    // useEffect(() => {
+    //     if (localStorage.getItem("access_token")) {
+    //         authStore.checkAuth().then(() => userStore.loadUser())
+    //     }
+    // }, [])
 
     return (
         <BrowserRouter>

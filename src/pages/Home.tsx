@@ -4,7 +4,7 @@ import {observer} from "mobx-react-lite";
 
 const Home: FC = () => {
     return (
-        <div>
+        <div className="h-screen bg-gray-100">
             <Header/>
         </div>
     );

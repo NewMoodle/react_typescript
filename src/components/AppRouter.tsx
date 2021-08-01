@@ -13,7 +13,10 @@ const AppRouter: FC = () => {
             {publicRoutes.map(({path, Component}, index) =>
                 <Route key={index} path={path} component={Component} exact/>
             )}
-            {authStore.authenticated && userStore.admin && adminRoutes.map(({path, Component}, index) =>
+            {/*{authStore.authenticated && userStore.admin && adminRoutes.map(({path, Component}, index) =>*/}
+            {/*    <Route key={index} path={path} component={Component} exact/>*/}
+            {/*)}*/}
+            {adminRoutes.map(({path, Component}, index) =>
                 <Route key={index} path={path} component={Component} exact/>
             )}
             <Redirect to={HOME_PAGE_ROUTE}/>

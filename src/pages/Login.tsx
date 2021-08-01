@@ -43,7 +43,7 @@ const Login: FC = () => {
                                 type="email"
                                 className={`${errors["Email"]?.message ?
                                     "border-red-500 focus:ring-red-500 focus:border-red-500" :
-                                    "border-gray-300 focus:ring-indigo-500 focus:border-indigo-500"} 
+                                    "border-gray-300 focus:ring-purple-600 focus:border-purple-600"} 
                                     placeholder-gray-500 text-gray-900 focus:outline-none w-full py-2 border-b-2`}
                                 placeholder="Email address"/>
                             <p className="mt-2 text-sm text-red-500">{errors["Email"]?.message}</p>
@@ -57,7 +57,7 @@ const Login: FC = () => {
                                 type="password"
                                 className={`${errors["Password"]?.message ?
                                     "border-red-500 focus:ring-red-500 focus:border-red-500" :
-                                    "border-gray-300 focus:ring-indigo-500 focus:border-indigo-500"} 
+                                    "border-gray-300 focus:ring-purple-600 focus:border-purple-600"} 
                                     placeholder-gray-500 text-gray-900 focus:outline-none w-full py-2 border-b-2`}
                                 placeholder="Password"/>
                             <p className="mt-2 text-sm text-red-500">{errors["Password"]?.message}</p>
@@ -76,7 +76,7 @@ const Login: FC = () => {
                         </div>
 
                         <div className="text-sm">
-                            <button className="font-medium text-indigo-600 hover:text-indigo-500 hover:underline">Forgot
+                            <button className="font-medium text-purple-600 hover:text-purple-500">Forgot
                                 your password?
                             </button>
                         </div>
@@ -84,14 +84,14 @@ const Login: FC = () => {
 
                     <div>
                         <button
-                            className="w-full py-2 px-4 text-sm font-semibold rounded-md text-white bg-indigo-600 hover:bg-indigo-700
-                            focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            className="w-full py-2 px-4 text-sm font-semibold rounded-md text-white bg-purple-600 hover:bg-purple-700
+                            focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
                             Log in
                         </button>
                     </div>
                 </form>
                 <Link to={HOME_PAGE_ROUTE}
-                      className="mt-2 ml-auto font-medium text-sm text-indigo-600 hover:text-indigo-500 hover:underline">
+                      className="mt-2 ml-auto font-medium text-sm text-purple-600 hover:text-purple-500">
                     home page
                 </Link>
                 {authStore.loading && <p>Loading...</p>}
