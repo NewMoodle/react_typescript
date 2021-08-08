@@ -78,7 +78,7 @@ export default class AuthStore {
             this.setAuthenticated(true)
             this.setToken(res.data)
         } catch (e) {
-
+            console.log(e.response?.data?.message)
         }
     }
 }

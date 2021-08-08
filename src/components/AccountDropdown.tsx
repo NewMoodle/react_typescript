@@ -23,7 +23,7 @@ const AccountDropdown: FC = () => {
                         <Link
                             to={ADMIN_PAGE_ROUTE}
                             className={`w-full flex items-center px-4 py-2 rounded-md font-medium 
-                            ${active ? "bg-indigo-500 text-white" : "text-gray-700"}`}>
+                            ${active ? "bg-purple-600 text-white" : "text-gray-700"}`}>
                             <CogIcon className={`mr-3 w-5 h-5 ${active ? "text-white" : "text-gray-400"}`}
                                      aria-hidden={true}/>
                             Administration
@@ -36,7 +36,7 @@ const AccountDropdown: FC = () => {
                         <button
                             onClick={() => authStore.logout().then(() => userStore.logout())}
                             className={`w-full flex items-center px-4 py-2 rounded-md font-medium 
-                            ${active ? "bg-indigo-500 text-white" : "text-gray-700"}`}>
+                            ${active ? "bg-purple-600 text-white" : "text-gray-700"}`}>
                             <LoginIcon className={`mr-3 w-5 h-5 ${active ? "text-white" : "text-gray-400"}`}
                                        aria-hidden={true}/>
                             Log out

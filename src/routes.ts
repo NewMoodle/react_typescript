@@ -1,7 +1,7 @@
 import {
-    ADMIN_PAGE_DASHBOARD_ROUTE,
+    ADMIN_PAGE_DASHBOARD_ROUTE, ADMIN_PAGE_GROUPS_ROUTE,
     ADMIN_PAGE_ROUTE,
-    ADMIN_PAGE_USERS_ROUTE,
+    ADMIN_PAGE_STUDENTS_ROUTE,
     HOME_PAGE_ROUTE,
     LOGIN_PAGE_ROUTE
 } from "./utils/consts";
@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import Admin from "./pages/Admin";
 import Users from "./components/admin/Users";
 import Dashboard from "./components/admin/Dashboard";
+import Groups from "./components/admin/groups/Groups";
 
 export const publicRoutes = [
     {
@@ -28,13 +29,18 @@ export const adminRoutes = [
         Component: Admin,
     },
     {
-        path: ADMIN_PAGE_USERS_ROUTE,
+        path: ADMIN_PAGE_DASHBOARD_ROUTE,
+        Component: Admin,
+        SubComponent: Dashboard
+    },
+    {
+        path: ADMIN_PAGE_STUDENTS_ROUTE,
         Component: Admin,
         SubComponent: Users
     },
     {
-        path: ADMIN_PAGE_DASHBOARD_ROUTE,
+        path: ADMIN_PAGE_GROUPS_ROUTE,
         Component: Admin,
-        SubComponent: Dashboard
+        SubComponent: Groups
     },
 ]

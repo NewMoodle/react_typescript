@@ -11,7 +11,7 @@ const Header: FC = () => {
     return (
         <header className="h-16 bg-white flex items-center shadow">
             <div className="w-full px-8 flex items-center justify-between">
-                <Link to={HOME_PAGE_ROUTE} className="text-2xl font-semibold text-gray-700">NewMoodle</Link>
+                <Link to={HOME_PAGE_ROUTE} className="text-2xl font-bold text-gray-700">NewMoodle</Link>
                 <div className="flex items-center space-x-4">
                     {authStore.authenticated ?
                         <AccountDropdown/>

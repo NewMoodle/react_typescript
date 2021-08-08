@@ -1,7 +1,7 @@
 import axios from "axios"
 import {Token} from "../domain/token";
 
-export const API_URL = "http://localhost:8000/api"
+export const API_URL = "https://my-lms-moodle.herokuapp.com/api"
 
 const $api = axios.create({
     withCredentials: true,
